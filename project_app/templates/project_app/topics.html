@@ -1,0 +1,15 @@
+{% extends 'project_app/base.html' %}
+
+{% block content %}
+    Topicos:
+
+    <ul>
+        {% for topic in topics %}
+            <li>{{ topic.text }}</li>
+        {% empty %}
+            <li><strong>No topics have been added yet.</strong></li>
+        {% endfor %}
+
+    </ul>
+    
+{% endblock %}

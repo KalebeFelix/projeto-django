@@ -6,7 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Projeto de Django</h1>
+    {% extends 'project_app/base.html' %}
+
+    {% block content %}
     <p>Django é um framework de desenvolvimento web baseado em Python.</p>
+    {% endblock %}
 </body>
 </html>
