@@ -1,0 +1,16 @@
+{% extends 'project_app/base.html' %}
+
+{% block content %}
+
+    {% if form.errors %}
+        <p>Seu login ou senha esta incorreto, por favor tente novamente.</p>
+    {% endif %}
+
+    <h2>Login</h2>
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">Singup</button>
+        <input type="hidden" name="next" value="{% url 'index' %}">
+    </form>
+{% endblock %}
