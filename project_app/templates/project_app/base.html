@@ -1,3 +1,19 @@
-<a href="{% url 'index' %}"><h1>Projeto de Django</h1></a>
-
-{% block content %} {% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        <a href="{% url 'index' %}">Projeto de Django</a> - <a href="{% url 'topics' %}">Tópicos</a>
+    </h1>
+    
+    <div id="container">
+        {% block content %} 
+        {% endblock %}
+    </div>
+    
+</body>
+</html>
