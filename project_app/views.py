@@ -66,4 +66,4 @@ def edit_entry(request, entry_id):
             return HttpResponseRedirect(reverse('topic', args=[topic.id]))
     context = {'entry': entry, 'topic': topic, 'form': form}
     return render(request, 'project_app/edit_entry.html', context)
-    
+

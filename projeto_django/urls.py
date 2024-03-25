@@ -6,4 +6,6 @@ urlpatterns = [
 
     # O APP SE TORNA A TELA INICIAL
     path('', include('project_app.urls')),
+
+    path('users/', include('users.urls')),
 ]

@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>
-        <a href="{% url 'index' %}">Projeto de Django</a> - <a href="{% url 'topics' %}">Tópicos</a>
+      <a href="{% url 'index' %}">Projeto de Django</a> -
+      <a href="{% url 'topics' %}">Tópicos</a>
     </h1>
-    
-    <div id="container">
-        {% block content %} 
-        {% endblock %}
-    </div>
-    
-</body>
+    <p>
+        {% if user.is_authenticated %}
+            Olá, {{ user.username }}
+            <small>(<a href="{% url 'logout' %}">Sair</a>)</small>
+        {% else %}
+            <a href="{% url 'login' %}">Entrar</a>
+        {% endif %}
+    </p>
+
+    <div id="container">{% block content %} {% endblock %}</div>
+  </body>
 </html>
