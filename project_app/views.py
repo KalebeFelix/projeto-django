@@ -2,7 +2,7 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from .form import TopicForm, EntryForm
-from .models import Topic
+from .models import Topic, Entry
 
 def index(request):
     # PAGINA HTML INICIAL, vai tratar a requisição
@@ -50,4 +50,20 @@ def new_entry(request, topic_id):
             return HttpResponseRedirect(reverse('topic', args=[topic_id]))
     context = {'topic': topic, 'form': form}
     return render(request, 'project_app/new_entry.html', context)
+
+def edit_entry(request, entry_id):
+    entry = get_object_or_404(Entry, id=entry_id)
+    topic = entry.topic
+    if request.method != 'POST':
+        # NÃO ENVIADO
+        form = EntryForm(instance=entry)
+        # instace significa que o ja vai esta preenchido com os dados anteriores
+    else:
+        # ENVIADO
+        form = EntryForm(instance=entry, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('topic', args=[topic.id]))
+    context = {'entry': entry, 'topic': topic, 'form': form}
+    return render(request, 'project_app/edit_entry.html', context)
     

@@ -1,0 +1,11 @@
+{% extends 'project_app/base.html' %}
+
+{% block content %}
+    <p><a href="{% url 'topic' topic.id %}">{{ entry.topic }}</a></p>
+    <p>Editar Anotação</p>
+    <form action="{% url 'edit_entry' entry.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit"> Atualizar</button>
+    </form>
+{% endblock %}
