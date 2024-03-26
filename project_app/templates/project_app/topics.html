@@ -7,7 +7,7 @@
         {% for topic in topics %}
             <li><a href="{% url 'topic' topic.id %}">{{ topic }}</a> </li>
         {% empty %}
-            <li><strong>No topics have been added yet.</strong></li>
+            <strong> Não há registros.</strong>
         {% endfor %}
 
     </ul>

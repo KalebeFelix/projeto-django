@@ -1,12 +1,15 @@
 from django.db import models
-
-# Create your models here.
+from django.contrib.auth.models import User
 
 class Topic(models.Model):
 
     # cria uma tabela no banco de dados
     text = models.CharField(max_length=200)
     date_added = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name_plural = 'Topics'
 
     def __str__(self):
         # mostra o que aparece quando for printar
